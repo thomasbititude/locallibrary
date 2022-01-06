@@ -12,24 +12,22 @@ var Book = require('../models/book')
 
   router.get("/", async (req, res) => {
     var books = await new Book().fetchAll(
-      {withRelated : ['authers']}
+      {withRelated : ['genres']}
     );
     res.json(books);
   });
   router.get("/:id", async (req, res) => {
     var books = await  new Book().where('id',parseInt(req.params.id)).fetch(
-      {withRelated : ['authers']}
+      {withRelated : ['genres']}
 
     );
     res.json(books);
   });
 
   router.post("/",async(req,res)=>{
-      var books = await  Book.forge({
-          title:req.body.title,
-          auther:req.body.auther,
-          genre:req.body.genre
-      }).save();
+      var books = await  Book.forge(
+            {...req.body}
+      ).save();
       res.json(books);
   });
 
