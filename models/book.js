@@ -5,6 +5,7 @@ var Book = bookshelf.Model.extend({
     authers(){
       return this.hasOne(Auther,'auther_id','auther_id');
     }
+    
   });
 
   
