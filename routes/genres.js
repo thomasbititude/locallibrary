@@ -1,9 +1,7 @@
 var express = require('express');
-const { request } = require('../app');
 var router = express.Router();
 var Genre = require('../models/genre')
- var bodyParser = require("body-parser");
- router.use(bodyParser.urlencoded({ extended: true }));
+ 
 
 
  router.get("/", async (req, res) => {
