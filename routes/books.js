@@ -1,22 +1,38 @@
-//var bookshelf =  require('../bookshelf');
 var express = require('express');
-const { request } = require('../app');
 var router = express.Router();
 var Book = require('../models/book')
- var bodyParser = require("body-parser");
- router.use(bodyParser.urlencoded({ extended: true }));
-
-// var Book = bookshelf.Model.extend({
-//     tableName: "book"
-//   });
-
-  router.get("/", async (req, res) => {
+ 
+router.get("/", async (req, res) => {
+  var books = await new Book().fetchAll(
+  );
+  res.json(books);
+});
+router.get("/auther", async (req, res) => {
+  var books = await new Book().fetchAll(
+    {withRelated : ['authers']}
+  );
+  res.json(books);
+});
+  router.get("/genre", async (req, res) => {
     var books = await new Book().fetchAll(
       {withRelated : ['genres']}
     );
     res.json(books);
   });
   router.get("/:id", async (req, res) => {
+    var books = await  new Book().where('id',parseInt(req.params.id)).fetch(
+
+    );
+    res.json(books);
+  });
+  router.get("/auther/:id", async (req, res) => {
+    var books = await  new Book().where('id',parseInt(req.params.id)).fetch(
+      {withRelated : ['authers']}
+
+    );
+    res.json(books);
+  });
+  router.get("/genre/:id", async (req, res) => {
     var books = await  new Book().where('id',parseInt(req.params.id)).fetch(
       {withRelated : ['genres']}
 

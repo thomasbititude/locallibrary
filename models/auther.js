@@ -1,11 +1,11 @@
 var bookshelf =  require('../bookshelf');
 
-var Auther = bookshelf.Model.extend({
+var Auther = bookshelf.model("Auther",{
     tableName: "authers",
-    idAttribute:'auther_id'
-    // books(){
-    //     return this.belongsToMany('Book');
-    //   }
+    idAttribute:'auther_id',
+    books(){
+        return this.hasMany('Book','auther_id','auther_id');
+      }
   });
   
   module.exports = Auther;

@@ -1,16 +1,16 @@
 var bookshelf =  require('../bookshelf');
-const Auther = require('../models/auther');
-const Genre = require('../models/genre');
 
-var Book = bookshelf.Model.extend({
+
+var Book = bookshelf.model('Book',{
     tableName: "book",
     authers(){
-      return this.hasOne(Auther,'auther_id','auther_id');
+      return this.hasMany('Auther','auther_id','auther_id');
     },
 
     genres(){
-      return this.hasOne(Genre,"id","genre_id");
+      return this.hasOne('Genre',"id","genre_id");
     }
+
   });
 
   
