@@ -1,6 +1,16 @@
 
-var Book = require('../models/book')
+var Book = require('../models/book');
+var Auther = require('../models/auther');
+var Genre = require('../models/genre')
+
  
+exports.index = async(req,res) => {
+    const [book_count, auther_count,genre_count]= await Promise.all([Book.count(), Auther.count(),Genre.count()]);
+    res.render('index', { title: 'LocalLibrary',book_count,auther_count,genre_count });
+
+    };
+
+
 exports.book_list =  async (req, res) => {
   var books = await new Book().fetchAll(
   );

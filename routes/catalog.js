@@ -7,7 +7,7 @@ var auther_controller = require('../controllers/autherController');
 var genre_controller = require('../controllers/genreController');
 
 /// BOOK ROUTES ///
-
+router.get('/',book_controller.index);
 // display book list
 router.get('/book', book_controller.book_list);
 

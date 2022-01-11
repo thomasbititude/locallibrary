@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+
+<%- include('layout'); -%>
+  
+    <div class="indexpage">
+
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+
+      <p>Home page of <%= title %></p>
+      <p>The library has the following record counts:</p>
+
+      <ul>
+          <li>Numper of books:<%= book_count%></li>
+          <li>Numper of authers:<%= auther_count%></li>
+          <li>Numper of genres:<%= genre_count%></li>
+      </ul>
+
+<%- include('footer'); -%>
+   
+    

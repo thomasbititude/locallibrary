@@ -3,6 +3,15 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.sidebar{
+  margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    display: block;
+    float: left;
+}
+
+.indexpage{
+  display: block;
+  padding-left: 250px;
 }
